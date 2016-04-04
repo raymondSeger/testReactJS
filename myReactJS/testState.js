@@ -22,8 +22,12 @@ var LikeButton = React.createClass({
     var like_or_not = this.state.liked ? 'like' : 'haven\'t liked';
     var how_many_time_you_click = this.state.howManyTimeYouClicked;
 
+    /*
+     Since JSX is JavaScript, identifiers such as class and for are discouraged as XML attribute names.
+     Instead, React DOM components expect DOM property names like className and htmlFor, respectively.
+     */
     return (
-      <p onClick={ this.handleClick }>
+      <p className="className" onClick={ this.handleClick }>
         You { like_or_not } this. You clicked { how_many_time_you_click } time. Click to toggle.
       </p>
     );
