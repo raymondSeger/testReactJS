@@ -27,9 +27,40 @@ var LikeButton = React.createClass({
      Instead, React DOM components expect DOM property names like className and htmlFor, respectively.
      */
     return (
-      <p className="className" onClick={ this.handleClick }>
+      <div className="className" onClick={ this.handleClick }>
         You { like_or_not } this. You clicked { how_many_time_you_click } time. Click to toggle.
-      </p>
+        <LikeButton.LikeButtonChildren name="raymond"></LikeButton.LikeButtonChildren>
+      </div>
+    );
+
+  }
+
+});
+
+LikeButton.LikeButtonChildren = React.createClass({
+
+  getInitialState: function() {
+
+    return { 
+      name: ''
+    };
+
+  },
+
+  handleClick: function(event) {
+
+    this.setState({ 
+      name: !this.property.name
+    });
+
+  },
+
+  render: function() {
+    var name = this.props.name;
+    return (
+      <div>
+        My name is { name }
+      </div>
     );
 
   }
@@ -37,6 +68,8 @@ var LikeButton = React.createClass({
 });
 
 ReactDOM.render(
-  <LikeButton />,
+    <LikeButton>
+    </LikeButton>
+   ,
   document.getElementById('content')
 );
